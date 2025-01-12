@@ -2,20 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
+  background-color: white;
   font-family: Arial, Helvetica, sans-serif;
+  @apply m-4;
+}
+
+.buttonGithub {
+  border-width: 1.5px;
+  @apply flex flex-row items-center justify-center text-[9px] py-1 px-4 rounded-lg border-gray-200	font-bold;
 }

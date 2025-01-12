@@ -1,3 +1,8 @@
+Improvements:
+
+- Graph API instead of REST. Cleaner and more efficient calls.
+- Don't repeat the code for the call in searchbar and in the page of the user
+
 To run the development server:
 
 # bash
