@@ -1,13 +1,19 @@
-import Image from "next/image";
 import { ButtonProps } from "../constants/types";
+import * as Icons from "../constants/icons";
 
-const Button = (props: ButtonProps) => {
+const Button = ({ onClick, icon, label, size }: ButtonProps) => {
+  // Find the icon specified in props
+  const IconComponent = icon ? Icons[icon as keyof typeof Icons] : null;
+
   return (
-    <button onClick={props.onClick} className=" buttonGithub">
-      <Image src={props.icon} width={20} height={20} alt={props.label} />
-      {props.label}
+    <button onClick={onClick} className="buttonGithub">
+      {/** Only render icon if it exists */}
+      {IconComponent && <IconComponent />}
+      {label}
     </button>
   );
 };
 
 export default Button;
+
+//size

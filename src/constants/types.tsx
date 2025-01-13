@@ -1,9 +1,11 @@
+import * as Icons from "../constants/icons";
+
 export type RepositoryProps = {
   title: string;
   description: string | null;
   language: string | null;
   lastUpdate: number;
-  isStarred: boolean | null;
+  //isStarred: boolean | null;
   nForks: number;
 };
 
@@ -20,7 +22,7 @@ export type ButtonProps = {
   label: string;
   size: "sm" | "md" | "lg";
   onClick: () => void;
-  icon: string;
+  icon: keyof typeof Icons | null;
 };
 
 export type ProfileProps = {
@@ -42,4 +44,8 @@ export type RepositoryData = {
   updated_at: number;
   forks: number;
   isStarred: boolean | null;
+};
+
+export type NavbarProps = {
+  username: string;
 };

@@ -1,9 +1,9 @@
 import { DropdownProps } from "../constants/types";
 
-const Dropdown = (props: DropdownProps) => {
+const Dropdown = ({ name, options }: DropdownProps) => {
   return (
-    <select name={props.name} id={props.name}>
-      {props.options.map((opt, index) => (
+    <select name={name} id={name} className="text-[11px]">
+      {options.map((opt, index) => (
         <option key={index} value={opt}>
           {opt}
         </option>

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import { IconGithub } from "@/constants/icons";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +29,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <h1>Github With Search</h1>
+        <div className="flex flex-row space-x-2">
+          <IconGithub />
+          <h1 className="text-sm">Github With Search</h1>
+        </div>
         {children}
       </body>
     </html>

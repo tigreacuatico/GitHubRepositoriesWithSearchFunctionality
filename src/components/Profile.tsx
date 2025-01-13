@@ -10,18 +10,18 @@ const Profile = (props: ProfileProps) => {
         width={200}
         height={200}
         alt={props.img}
-        className="rounded-full my-4"
+        className="rounded-full mb-4"
       />
       <p className="font-bold text-md">{props.name}</p>
       <p className="text-[13px] text-gray-600">{props.username}</p>
-      <p className="text-sm">{props.description}</p>
+      <p className="text-sm my-2">{props.description}</p>
       <Button
         label="Follow"
         onClick={() => console.log("Follow clicked")}
         size="md"
-        icon="/loading.png"
+        icon={null}
       />
-      <div className="flex flex-row text-[10px] text-gray-600 space-x-2">
+      <div className="flex flex-row text-[10px] text-gray-600 space-x-2 mt-2">
         <p>{props.nFollowers} followers ·</p>
         <p>{props.nFollowings} following ·</p>
         <p>{props.nStars}</p>

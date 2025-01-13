@@ -2,11 +2,11 @@
 import { useParams } from "next/navigation";
 import Navbar from "../../components/Navbar";
 import { useState, useEffect } from "react";
-import Repository from "@/components/Repository";
 import { RepositoryProps, RepositoryData } from "../../constants/types";
 //import SearchBarProfile from "../../components/SearchBarProfile";
 import Profile from "../../components/Profile";
 import Gallery from "../../components/Gallery";
+import Dropdown from "@/components/Dropdown";
 
 export default function ProfilePage() {
   const params = useParams();
@@ -25,6 +25,7 @@ export default function ProfilePage() {
     "test2",
   ]);
   const [repositories, setRepositories] = useState<RepositoryProps[]>([]);
+  const [languagesOptions, setLanguagesOptions] = useState<string[]>([]);
 
   useEffect(() => {
     async function getGithubData() {
@@ -58,6 +59,15 @@ export default function ProfilePage() {
           isStarred: false, // TODO:
         }));
         setRepositories(list);
+        // Get all unique languages of all the repositories of the user
+        const langsRepos = Array.from(
+          new Set(
+            list
+              .map((repo: RepositoryData) => repo.language)
+              .filter((value) => typeof value === "string")
+          )
+        );
+        setLanguagesOptions(langsRepos);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -67,7 +77,8 @@ export default function ProfilePage() {
 
   return (
     <div className="max-w-full max-h-full">
-      <Navbar />
+      <Navbar username={username} />
+      <hr className="h-px my-4 bg-gray-200 border-0" />
       <div className="flex flex-row">
         <Profile
           img={image}
@@ -81,6 +92,21 @@ export default function ProfilePage() {
           imgOrganizations={organizations}
         />
         <div className="flex flex-col w-full">
+          <div>
+            <Dropdown
+              name={"Type:"}
+              options={[
+                "All",
+                "Sources",
+                "Forks",
+                "Archived",
+                "Can be sponsored",
+                "Mirrors",
+                "Templates",
+              ]}
+            />
+            <Dropdown name={"Language:"} options={languagesOptions} />
+          </div>
           <Gallery options={repositories} />
         </div>
       </div>

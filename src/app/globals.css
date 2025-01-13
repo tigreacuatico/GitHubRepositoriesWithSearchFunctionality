@@ -10,5 +10,40 @@ body {
 
 .buttonGithub {
   border-width: 1.5px;
-  @apply flex flex-row items-center justify-center text-[9px] py-1 px-4 rounded-lg border-gray-200	font-bold;
+  @apply flex flex-row items-center justify-center text-[9px] py-1 px-4 rounded-lg border-gray-200	font-bold bg-gray-50 hover:bg-gray-100;
+}
+
+.buttonNavbar {
+  @apply hover:bg-gray-100 rounded-md flex flex-row px-2 py-1;
+}
+
+i {
+  @apply mr-0.5 text-gray-500;
+}
+
+.yellowIcon {
+  @apply text-yellow-500;
+}
+
+.blueIcon {
+  @apply text-blue-500;
+}
+.darkBlueIcon {
+  @apply text-cyan-700;
+}
+
+.redIcon {
+  @apply text-red-500;
+}
+
+.orangeIcon {
+  @apply text-orange-500;
+}
+
+.greenIcon {
+  @apply text-green-500;
+}
+
+.logo {
+  @apply mr-0.5 text-black;
 }
