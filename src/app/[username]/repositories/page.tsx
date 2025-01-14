@@ -78,7 +78,7 @@ export default function ProfilePage() {
     <div className="max-w-full max-h-full">
       <Navbar username={username} />
       <hr className="h-px mb-4 mt-1 bg-gray-200 border-0" />
-      <div className="flex flex-row">
+      <div className="flex flex-col md:flex-row">
         <Profile
           img={image}
           name={name}

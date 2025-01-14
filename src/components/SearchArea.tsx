@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { SearchAreaProps, RepositoryProps } from "@/constants/types";
-import { IconClose } from "../constants/icons";
+import { IconArrowDown, IconCheck, IconClose } from "../constants/icons";
 import Button from "./Button";
 import Gallery from "./Gallery";
 
@@ -22,6 +22,8 @@ const SearchArea = ({ repositories, languageOptions }: SearchAreaProps) => {
   >([]);
   const [dropdownLanguagesVisible, setDropdownLanguagesVisible] =
     useState<boolean>(false);
+
+  const [dropdownTypeVisible, setDropdownTypeVisible] = useState<boolean>(true);
 
   useEffect(() => {
     // Filter repositories based on repository name and/or language
@@ -49,72 +51,112 @@ const SearchArea = ({ repositories, languageOptions }: SearchAreaProps) => {
 
   return (
     <div className="flex flex-col w-full">
-      <div className="ml-8">
-        <div className="flex flex-row space-x-2">
+      <div className="md:ml-8">
+        <div className="flex flex-col md:flex-row space-x-2">
           <input
             type="text"
             value={repositoryNameQuery}
             onChange={(e) => setRepositoryNameQuery(e.target.value)}
             placeholder="Find a repository..."
+            className="h-fit mb-4 md:mb-0 text-[14px] md:text-xs "
           />
-          {/**Dropdown Type */}
-          <div className="flex flex-row text-[11px] buttonGithub">
-            <p className="mr-1">Type:</p>
-            <select name="Type" id="Type">
-              {allTypeOptions.map((opt, index) => (
-                <option key={index} value={opt}>
-                  {opt}
-                </option>
-              ))}
-            </select>
-          </div>
 
-          {/**Language filter with floating dropdown */}
-          <div className="relative">
-            <Button
-              label={`Language: ${selectedLanguage}`}
-              onClick={() =>
-                setDropdownLanguagesVisible(!dropdownLanguagesVisible)
-              }
-              icon="IconArrowDown"
-              iconFirst={false}
-            />
-          </div>
-          {/**Floating dropdown */}
-          <div
-            className={
-              dropdownLanguagesVisible
-                ? "flex flex-col text-[11px] visible absolute right-8 top-32 bg-white shadow-lg p-4 rounded-lg border"
-                : "hidden"
-            }
-          >
+          <div className="flex flex-row space-x-2">
+            {/**Dropdown Type */}
             <div
-              className="absolute right-1 top-0"
-              onClick={() => setDropdownLanguagesVisible(false)}
+              className="flex flex-row text-[11px] buttonGithub h-fit w-28 hover:cursor-pointer"
+              onClick={() => {
+                setDropdownTypeVisible(!dropdownTypeVisible);
+                setDropdownLanguagesVisible(false);
+              }}
             >
-              <IconClose />
+              <p className="mr-1">Type:</p>
+              <IconArrowDown />
             </div>
 
-            <ul>
-              {allLanguagesOptions.map((opt, index) => (
-                <div key={index}>
-                  <li
-                    value={opt}
-                    onClick={() => {
-                      setSelectedLanguage(opt);
-                      setDropdownLanguagesVisible(false);
-                    }}
-                    className="hover:bg-gray-200 text-[10px]"
-                  >
-                    {opt}
-                  </li>
-                  {/** Don't render line for last item in list */}
-                  {index === allLanguagesOptions.length - 1 ? null : (
-                    <hr className="h-px my-1 bg-gray-200 border-0" />
-                  )}
-                </div>
-              ))}
-            </ul>
+            {/**Floating dropdown type*/}
+            <div
+              className={
+                dropdownTypeVisible
+                  ? "flex flex-col text-[11px] visible absolute right-64 top-28 bg-white shadow-lg p-4 rounded-lg border w-40"
+                  : "hidden"
+              }
+            >
+              <div
+                className="absolute right-0.5 top-0 text-[14px] hover:cursor-pointer"
+                onClick={() => {
+                  setDropdownTypeVisible(false);
+                }}
+              >
+                <IconClose />
+              </div>
+              <ul>
+                {allTypeOptions.map((opt, index) => (
+                  <div key={index}>
+                    <li value={opt} className="optionDropdown">
+                      {opt}
+                      {selectedLanguage === opt ? <IconCheck /> : null}
+                    </li>
+                    {/** Don't render line for last item in list */}
+                    {index === allTypeOptions.length - 1 ? null : (
+                      <hr className="h-px my-1 bg-gray-200 border-0" />
+                    )}
+                  </div>
+                ))}
+              </ul>
+            </div>
+
+            {/**Language filter with floating dropdown */}
+
+            <div className="relative w-60 h-fit">
+              <Button
+                label={`Language: ${selectedLanguage}`}
+                onClick={() => {
+                  setDropdownLanguagesVisible(!dropdownLanguagesVisible);
+                  setDropdownTypeVisible(false);
+                }}
+                icon="IconArrowDown"
+                iconFirst={false}
+              />
+            </div>
+
+            {/**Floating dropdown languages*/}
+            <div
+              className={
+                dropdownLanguagesVisible
+                  ? "flex flex-col text-[11px] visible absolute right-36 top-28 bg-white shadow-lg p-4 rounded-lg border w-40"
+                  : "hidden"
+              }
+            >
+              <div
+                className="absolute right-0.5 top-0 text-[14px] hover:cursor-pointer"
+                onClick={() => setDropdownLanguagesVisible(false)}
+              >
+                <IconClose />
+              </div>
+
+              <ul>
+                {allLanguagesOptions.map((opt, index) => (
+                  <div key={index}>
+                    <li
+                      value={opt}
+                      onClick={() => {
+                        setSelectedLanguage(opt);
+                        setDropdownLanguagesVisible(false);
+                      }}
+                      className="optionDropdown"
+                    >
+                      {opt}
+                      {selectedLanguage === opt ? <IconCheck /> : null}
+                    </li>
+                    {/** Don't render line for last item in list */}
+                    {index === allLanguagesOptions.length - 1 ? null : (
+                      <hr className="h-px my-1 bg-gray-200 border-0" />
+                    )}
+                  </div>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>

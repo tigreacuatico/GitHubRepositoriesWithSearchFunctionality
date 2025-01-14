@@ -10,7 +10,7 @@ const Navbar = ({ username }: NavbarProps) => {
 
   return (
     <nav className="relative">
-      <ul className="flex flex-row justify-start space-x-4 font-medium text-xs ml-52 ">
+      <ul className="flex flex-row justify-center md:justify-start space-x-4 font-medium text-xs md:ml-52 ">
         <li
           className={
             active === "Overview" ? "underline navActive" : "no-underline"

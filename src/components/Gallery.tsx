@@ -3,7 +3,7 @@ import Repository from "./Repository";
 
 const Gallery = ({ options }: GalleryProps) => {
   return (
-    <div className="flex flex-col my-4 ml-8 w-11/12">
+    <div className="flex flex-col my-4 md:ml-8 w-11/12">
       {options.map((repo, index: number) => (
         <div key={index} className="">
           <Repository
@@ -11,7 +11,6 @@ const Gallery = ({ options }: GalleryProps) => {
             description={repo.description}
             language={repo.language}
             lastUpdate={repo.lastUpdate}
-            isStarred={repo.isStarred}
             nForks={repo.nForks}
           />
           {/** Don't render line for last item in list */}

@@ -5,15 +5,25 @@ import { useRouter } from "next/navigation";
 const SearchBar = () => {
   const [username, setUsername] = useState<string>("");
   const router = useRouter();
+  const [notFoundVisible, setNotFoundVisible] = useState<boolean>(false);
 
-  // Get repository data from Github user typed in the search bar.
+  // Search username typed in the searchbar in the API
   const handleSearch = async () => {
     try {
-      const res = await fetch(`https://api.github.com/users/${username}/repos`);
-      const result = await res.json();
-      // TODO: don't redirect if username doesn't exist in Github
-      // If username exists, go to its profile page
-      router.push(`/${username}/repositories`);
+      const res = await fetch(`https://api.github.com/users/${username}`);
+
+      // Don't redirect to profile if username doesn't exist in Github, show error message
+      if (!res.ok) {
+        setNotFoundVisible(true);
+
+        // Show error message during 3 seconds
+        setTimeout(() => {
+          setNotFoundVisible(false);
+        }, 3000);
+      } else {
+        // If username exists, go to its profile page
+        router.push(`/${username}/repositories`);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -26,7 +36,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="">
+    <div className="flex flex-col justify-center items-center">
       <input
         type="text"
         value={username}
@@ -34,6 +44,15 @@ const SearchBar = () => {
         placeholder="Enter GitHub username"
         onKeyDown={handleKeyDown}
       />
+      <div
+        className={
+          notFoundVisible
+            ? "bg-red-200 p-1 w-2/3 text-lg md:text-xs rounded-lg mt-2 text-red-700"
+            : "hidden"
+        }
+      >
+        <p>Username does not exist. Please try again.</p>
+      </div>
     </div>
   );
 };

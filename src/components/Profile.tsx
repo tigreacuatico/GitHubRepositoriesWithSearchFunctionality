@@ -14,13 +14,13 @@ const Profile = ({
   email,
 }: ProfileProps) => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mb-8 w-1/5">
       <Image
         src={img || "/loading.png"}
         width={200}
         height={200}
         alt={img}
-        className="rounded-full mb-4"
+        className="rounded-full mb-4 w-16 h-fit md:w-48 md:h-fit mt-4 md:mt-0"
         priority
       />
       <p className="font-bold text-md">{name}</p>
@@ -36,19 +36,22 @@ const Profile = ({
       <div className="flex flex-row text-[10px] text-gray-600 space-x-2 mt-2">
         <p>
           <IconFollowers />
-          {nFollowers} followers ·
+          <b className="text-black">{nFollowers}</b> followers ·
         </p>
-        <p>{nFollowings} following ·</p>
+        <p>
+          <b className="text-black">{nFollowings}</b> following ·
+        </p>
         <p>
           <IconStar />
-          {nStars}
+          <b className="text-black">{nStars}</b>
         </p>
       </div>
-      {}
-      <p>
-        <IconEmail />
-        {email}
-      </p>
+      {email ? (
+        <p className="text-[10px] mt-2">
+          <IconEmail />
+          {email}
+        </p>
+      ) : null}
       <hr className="h-px my-4 bg-gray-200 border-0" />
       <p className="font-bold text-xs">Organizations</p>
     </div>

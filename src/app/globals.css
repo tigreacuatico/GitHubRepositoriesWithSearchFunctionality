@@ -10,7 +10,7 @@ body {
 
 .buttonGithub {
   border-width: 1.5px;
-  @apply flex flex-row items-center justify-center text-[9px] py-1 px-4 rounded-lg border-gray-200	font-bold bg-gray-50 hover:bg-gray-100;
+  @apply flex flex-row items-center justify-center text-[9px] py-1 px-4 rounded-lg border-gray-200 font-semibold bg-gray-50 hover:bg-gray-100;
 }
 
 .buttonNavbar {
@@ -67,5 +67,9 @@ i {
 
 input {
   border-width: 2px;
-  @apply text-xs text-gray-600 focus:border-blue-500 border-gray-200 rounded-md p-1 w-2/3 border outline-none;
+  @apply md:text-xs text-lg text-gray-600 focus:border-blue-500 focus:shadow-blue-500 focus:shadow-sm border-gray-200 rounded-md p-1 w-full border outline-none;
+}
+
+.optionDropdown {
+  @apply hover:text-blue-700 hover:cursor-pointer text-[10px];
 }

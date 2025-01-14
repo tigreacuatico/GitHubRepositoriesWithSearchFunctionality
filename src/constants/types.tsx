@@ -13,12 +13,6 @@ export type GalleryProps = {
   options: RepositoryProps[];
 };
 
-export type DropdownProps = {
-  name: string;
-  options: string[];
-  selectedItem: string;
-};
-
 export type SearchAreaProps = {
   repositories: RepositoryProps[];
   languageOptions: string[];

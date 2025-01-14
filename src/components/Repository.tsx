@@ -13,7 +13,7 @@ const Repository = ({
 }: RepositoryProps) => {
   return (
     <div className="flex flex-col">
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row justify-between mb-2 md:mb-1">
         {/**TODO: on click go to x repository */}
         <p className="text-blue-700 font-bold hover:underline">{title}</p>{" "}
         <Button
