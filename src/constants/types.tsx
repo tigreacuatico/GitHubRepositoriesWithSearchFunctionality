@@ -4,7 +4,7 @@ export type RepositoryProps = {
   title: string;
   description: string | null;
   language: string | null;
-  lastUpdate: number;
+  lastUpdate: string;
   //isStarred: boolean | null;
   nForks: number;
 };
@@ -20,7 +20,7 @@ export type SearchAreaProps = {
 
 export type ButtonProps = {
   label: string;
-  size: "sm" | "md" | "lg"; //TODO:
+  size?: "sm" | "md" | "lg"; //TODO:
   onClick: () => void;
   icon: keyof typeof Icons | null;
   iconFirst: boolean;

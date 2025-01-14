@@ -1,56 +1,38 @@
-Improvements:
+Welcome to Github With Search!
+This is a project that implements repository search by name and language with the GitHub REST API.
 
-- Graph API instead of REST. Cleaner and more efficient calls.
-- Don't repeat the code for the call in searchbar and in the page of the user
+# This project:
 
-To run the development server:
+- Is written in Next.js, a React framework
+- Uses TypeScript
+- Uses git
+- Is responsive
+- Has unit tests (Jest, react-testing-library)
+- Has storybook
 
-# bash
+## Instructions on how to run the project:
 
-npm run dev
+# To run the development server:
 
-# or
+Type npm run dev in a terminal, and go to http://localhost:3000/
 
-yarn dev
+# To run the test suite:
 
-# or
+Type npm test
 
-pnpm dev
+# To run the Storybook:
 
-# or
+Type npm run storybook, it will automatically open a new window
 
-bun dev
+## Future improvements:
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Use the Graph API instead of REST for cleaner and more efficient calls.
+- Don't repeat the code for the call in searchbar and in the page of the user.
+- More tests!
+- Calculate Organizations and Stars in the Profile of the user.
+- Implement functionality to Type dropdown.
+- Improve tablet responsive design.
+- Properly calculate the "Updated x days ago" on each repository.
 
 ## Deploy on Vercel
 

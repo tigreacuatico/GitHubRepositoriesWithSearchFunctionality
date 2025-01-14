@@ -9,26 +9,29 @@ export default buttonStory;
 
 type Story = StoryObj<typeof Button>;
 
-export const Green: Story = {
+export const WithIconAfter: Story = {
   args: {
     label: "Button",
     size: "md",
-    icon: "../../public/new.webp",
+    icon: "IconStar",
+    iconFirst: false,
   },
 };
 
-export const Grey: Story = {
+export const WithIconInFront: Story = {
   args: {
     label: "Button",
     size: "md",
-    icon: "",
+    icon: "IconStar",
+    iconFirst: true,
   },
 };
 
-export const Star: Story = {
+export const NoIcon: Story = {
   args: {
     label: "Button",
     size: "md",
-    icon: "../../public/star.webp",
+    icon: null,
+    iconFirst: false,
   },
 };
