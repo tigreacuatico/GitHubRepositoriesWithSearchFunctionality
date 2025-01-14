@@ -17,11 +17,6 @@ export default function ProfilePage() {
   const [followers, setFollowers] = useState<number>(0);
   const [followings, setFollowings] = useState<number>(0);
   const [stars, setStars] = useState<number>(0); // TODO: calculation. sum all stars repos
-  const [organizations, setOrganizations] = useState<string[]>([
-    // TODO: calc
-    "test",
-    "test2",
-  ]);
   const [repositories, setRepositories] = useState<RepositoryProps[]>([]);
   const [languageOptions, setLanguageOptions] = useState<string[]>([]);
 
@@ -59,11 +54,11 @@ export default function ProfilePage() {
         setRepositories(list);
 
         // Get all unique languages of all the repositories of the user to build options of dropdown filter Language
-        const langsRepos = Array.from(
+        const langsRepos: string[] = Array.from(
           new Set(
             list
               .map((repo: RepositoryData) => repo.language)
-              .filter((value) => typeof value === "string")
+              .filter((value: string | null) => typeof value === "string")
           )
         );
         setLanguageOptions(langsRepos);
@@ -76,7 +71,7 @@ export default function ProfilePage() {
 
   return (
     <div className="max-w-full max-h-full">
-      <Navbar username={username} />
+      <Navbar username={usernameStr} />
       <hr className="h-px mb-4 mt-1 bg-gray-200 border-0" />
       <div className="flex flex-col md:flex-row">
         <Profile
@@ -88,7 +83,6 @@ export default function ProfilePage() {
           nFollowers={followers}
           nFollowings={followings}
           nStars={stars}
-          imgOrganizations={organizations}
         />
         <SearchArea
           repositories={repositories}

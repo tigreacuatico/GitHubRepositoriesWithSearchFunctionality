@@ -1,0 +1,35 @@
+{
+  "IconStar": {
+    "className": "bi bi-star"
+  },
+  "IconFollowers": {
+    "className": "bi bi-people"
+  },
+  "IconEmail": {
+    "className": "bi bi-envelope"
+  },
+  "IconOverview": {
+    "className": "bi bi-book"
+  },
+  "IconRepositories": {
+    "className": "bi bi-journal-bookmark"
+  },
+  "IconProjects": {
+    "className": "bi bi-bookshelf"
+  },
+  "IconForks": {
+    "className": "bi bi-git"
+  },
+  "IconGithub": {
+    "className": "bi bi-github logo"
+  },
+  "IconClose": {
+    "className": "bi bi-x"
+  },
+  "IconCheck": {
+    "className": "bi bi-check2"
+  },
+  "IconArrowDown": {
+    "className": "bi bi-caret-down-fill"
+  }
+}

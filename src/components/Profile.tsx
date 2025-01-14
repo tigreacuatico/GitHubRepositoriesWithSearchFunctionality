@@ -29,7 +29,6 @@ const Profile = ({
       <Button
         label="Follow"
         onClick={() => console.log("Follow clicked")}
-        size="md"
         icon={null}
         iconFirst={false}
       />

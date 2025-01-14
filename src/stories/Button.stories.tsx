@@ -12,7 +12,6 @@ type Story = StoryObj<typeof Button>;
 export const WithIconAfter: Story = {
   args: {
     label: "Button",
-    size: "md",
     icon: "IconStar",
     iconFirst: false,
   },
@@ -21,7 +20,6 @@ export const WithIconAfter: Story = {
 export const WithIconInFront: Story = {
   args: {
     label: "Button",
-    size: "md",
     icon: "IconStar",
     iconFirst: true,
   },
@@ -30,7 +28,6 @@ export const WithIconInFront: Story = {
 export const NoIcon: Story = {
   args: {
     label: "Button",
-    size: "md",
     icon: null,
     iconFirst: false,
   },

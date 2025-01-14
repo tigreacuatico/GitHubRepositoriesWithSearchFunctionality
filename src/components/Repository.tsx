@@ -1,7 +1,6 @@
 import Button from "./Button";
 import { RepositoryProps } from "../constants/types";
-import { IconForks } from "@/constants/icons";
-import { IconLanguage } from "@/constants/icons";
+import { IconForks, IconLanguage } from "@/constants/icons";
 
 const Repository = ({
   title,
@@ -18,9 +17,8 @@ const Repository = ({
         <p className="text-blue-700 font-bold hover:underline">{title}</p>{" "}
         <Button
           label="Star"
-          icon="IconStar" //{isStarred ? "/starred.webp" : "/notStarred.webp"} //TODO: calc based on current user watching page
-          onClick={() => 0}
-          size="sm"
+          icon="IconStar"
+          onClick={() => console.log("Star still not implemented")}
           iconFirst={true}
         />
       </div>

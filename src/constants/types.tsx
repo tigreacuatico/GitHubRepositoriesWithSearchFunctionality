@@ -1,11 +1,8 @@
-import * as Icons from "../constants/icons";
-
 export type RepositoryProps = {
   title: string;
   description: string | null;
   language: string | null;
   lastUpdate: string;
-  //isStarred: boolean | null;
   nForks: number;
 };
 
@@ -20,9 +17,8 @@ export type SearchAreaProps = {
 
 export type ButtonProps = {
   label: string;
-  size?: "sm" | "md" | "lg"; //TODO:
-  onClick: () => void;
-  icon: keyof typeof Icons | null;
+  onClick: () => void | null;
+  icon: string | null;
   iconFirst: boolean;
 };
 
@@ -35,7 +31,7 @@ export type ProfileProps = {
   nFollowers: number;
   nFollowings: number;
   nStars: number; //TODO: calc
-  imgOrganizations: string[]; //TODO: calc
+  //imgOrganizations: string[]; //TODO: calc
 };
 
 export type RepositoryData = {
@@ -48,7 +44,7 @@ export type RepositoryData = {
 };
 
 export type NavbarProps = {
-  username: string;
+  username: string | null;
 };
 
 export type SearchBarProfileProps = {

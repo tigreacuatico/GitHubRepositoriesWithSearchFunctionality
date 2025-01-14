@@ -23,7 +23,8 @@ const SearchArea = ({ repositories, languageOptions }: SearchAreaProps) => {
   const [dropdownLanguagesVisible, setDropdownLanguagesVisible] =
     useState<boolean>(false);
 
-  const [dropdownTypeVisible, setDropdownTypeVisible] = useState<boolean>(true);
+  const [dropdownTypeVisible, setDropdownTypeVisible] =
+    useState<boolean>(false);
 
   useEffect(() => {
     // Filter repositories based on repository name and/or language
