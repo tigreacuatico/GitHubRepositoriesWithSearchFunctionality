@@ -1,12 +1,10 @@
 "use client";
 import { useParams } from "next/navigation";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../../components/Navbar";
 import { useState, useEffect } from "react";
-import { RepositoryProps, RepositoryData } from "../../constants/types";
-//import SearchBarProfile from "../../components/SearchBarProfile";
-import Profile from "../../components/Profile";
-import Gallery from "../../components/Gallery";
-import Dropdown from "@/components/Dropdown";
+import { RepositoryProps, RepositoryData } from "../../../constants/types";
+import Profile from "../../../components/Profile";
+import SearchArea from "@/components/SearchArea";
 
 export default function ProfilePage() {
   const params = useParams();
@@ -25,12 +23,12 @@ export default function ProfilePage() {
     "test2",
   ]);
   const [repositories, setRepositories] = useState<RepositoryProps[]>([]);
-  const [languagesOptions, setLanguagesOptions] = useState<string[]>([]);
+  const [languageOptions, setLanguageOptions] = useState<string[]>([]);
 
   useEffect(() => {
     async function getGithubData() {
       try {
-        // First fetch
+        // First fetch to get user profile data
         const response1 = await fetch(
           `https://api.github.com/users/${username}`
         );
@@ -42,10 +40,10 @@ export default function ProfilePage() {
         setUsernameStr(result.login);
         setEmail(result.email);
         setFollowers(result.followers);
-        setFollowings(result.followings);
+        setFollowings(result.following);
         setStars(0);
 
-        // Second fetch (after the first one has completed)
+        // Second fetch to get user repositories data
         const response2 = await fetch(
           `https://api.github.com/users/${username}/repos`
         );
@@ -59,7 +57,8 @@ export default function ProfilePage() {
           isStarred: false, // TODO:
         }));
         setRepositories(list);
-        // Get all unique languages of all the repositories of the user
+
+        // Get all unique languages of all the repositories of the user to build options of dropdown filter Language
         const langsRepos = Array.from(
           new Set(
             list
@@ -67,7 +66,7 @@ export default function ProfilePage() {
               .filter((value) => typeof value === "string")
           )
         );
-        setLanguagesOptions(langsRepos);
+        setLanguageOptions(langsRepos);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -78,7 +77,7 @@ export default function ProfilePage() {
   return (
     <div className="max-w-full max-h-full">
       <Navbar username={username} />
-      <hr className="h-px my-4 bg-gray-200 border-0" />
+      <hr className="h-px mb-4 mt-1 bg-gray-200 border-0" />
       <div className="flex flex-row">
         <Profile
           img={image}
@@ -91,26 +90,11 @@ export default function ProfilePage() {
           nStars={stars}
           imgOrganizations={organizations}
         />
-        <div className="flex flex-col w-full">
-          <div>
-            <Dropdown
-              name={"Type:"}
-              options={[
-                "All",
-                "Sources",
-                "Forks",
-                "Archived",
-                "Can be sponsored",
-                "Mirrors",
-                "Templates",
-              ]}
-            />
-            <Dropdown name={"Language:"} options={languagesOptions} />
-          </div>
-          <Gallery options={repositories} />
-        </div>
+        <SearchArea
+          repositories={repositories}
+          languageOptions={languageOptions}
+        />
       </div>
     </div>
   );
 }
-//<SearchBarProfile />

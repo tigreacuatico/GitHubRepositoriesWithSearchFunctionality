@@ -11,10 +11,9 @@ const SearchBar = () => {
     try {
       const res = await fetch(`https://api.github.com/users/${username}/repos`);
       const result = await res.json();
-      console.log("Result fetching", result);
       // TODO: don't redirect if username doesn't exist in Github
       // If username exists, go to its profile page
-      router.push(`/${username}`);
+      router.push(`/${username}/repositories`);
     } catch (error) {
       console.log(error);
     }

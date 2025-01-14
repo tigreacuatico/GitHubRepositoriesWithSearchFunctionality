@@ -16,13 +16,20 @@ export type GalleryProps = {
 export type DropdownProps = {
   name: string;
   options: string[];
+  selectedItem: string;
+};
+
+export type SearchAreaProps = {
+  repositories: RepositoryProps[];
+  languageOptions: string[];
 };
 
 export type ButtonProps = {
   label: string;
-  size: "sm" | "md" | "lg";
+  size: "sm" | "md" | "lg"; //TODO:
   onClick: () => void;
   icon: keyof typeof Icons | null;
+  iconFirst: boolean;
 };
 
 export type ProfileProps = {
@@ -33,8 +40,8 @@ export type ProfileProps = {
   email: string;
   nFollowers: number;
   nFollowings: number;
-  nStars: number;
-  imgOrganizations: string[];
+  nStars: number; //TODO: calc
+  imgOrganizations: string[]; //TODO: calc
 };
 
 export type RepositoryData = {
@@ -48,4 +55,9 @@ export type RepositoryData = {
 
 export type NavbarProps = {
   username: string;
+};
+
+export type SearchBarProfileProps = {
+  repositories: RepositoryProps[];
+  languagesOptions: string[];
 };

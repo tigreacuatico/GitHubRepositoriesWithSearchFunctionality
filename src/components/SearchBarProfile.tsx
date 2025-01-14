@@ -1,43 +1,97 @@
-"use client";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { RepositoryProps, SearchBarProfileProps } from "@/constants/types";
+import { useEffect, useState } from "react";
+import Dropdown from "./Dropdown";
+import Button from "./Button";
+
+const handleSearch = () => {};
 
 // TODO: join searchbar classes. refactor
-const SearchBarProfile = () => {
-  const [username, setUsername] = useState<string>("");
-  const router = useRouter();
+// TODO: add All in dropdown languages
+const SearchBarProfile = ({
+  repositories,
+  languagesOptions,
+}: SearchBarProfileProps) => {
+  const allLanguagesOptions: string[] = ["All"].concat(languagesOptions);
+  const allTypeOptions: string[] = [
+    "All",
+    "Sources",
+    "Forks",
+    "Archived",
+    "Can be sponsored",
+    "Mirrors",
+    "Templates",
+  ];
+  const [repositoryNameQuery, setRepositoryNameQuery] = useState<string>("");
+  const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
+  const [filteredRepositories, setFilteredRepositories] =
+    useState<RepositoryProps[]>(repositories);
 
-  // Get repository data from Github user typed in the search bar.
-  const handleSearch = async () => {
-    try {
-      const res = await fetch(`https://api.github.com/users/${username}/repos`);
-      const result = await res.json();
-      console.log("Result fetching", result);
-      // TODO: don't redirect if username doesn't exist in Github
-      // If username exists, go to its profile page
-      router.push(`/${username}`);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      handleSearch();
-    }
-  };
+  // Filter repositories based on new query
+  useEffect(() => {
+    const res = repositories.filter(
+      (repo) =>
+        repo.title.toLowerCase() === repositoryNameQuery.toLowerCase() &&
+        (repo.language == null || repo.language in selectedLanguages)
+    );
+    setFilteredRepositories(res);
+  }, [repositoryNameQuery, selectedLanguages]); // TODO: more efficient to filter only what has changed
 
   return (
-    <div className="">
+    <div className="flex flex-row space-x-2">
       <input
         type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        placeholder="Enter GitHub username"
-        onKeyDown={handleKeyDown}
+        value={repositoryNameQuery}
+        onChange={(e) => setRepositoryNameQuery(e.target.value)}
+        placeholder="Find a repository..."
+        onKeyDown={handleSearch}
       />
+      <div className="flex flex-row text-[11px] buttonGithub">
+        <p className="mr-1">Type:</p>
+        <select name="Type" id="Type">
+          {allTypeOptions.map((opt, index) => (
+            <option key={index} value={opt}>
+              {opt}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="flex flex-row text-[11px] buttonGithub">
+        <p className="mr-1">Language:</p>
+        <select
+          name="Language"
+          id="Language"
+          value={selectedLanguages}
+          onChange={(e) => setSelectedLanguages(e.target.value)}
+        >
+          {allLanguagesOptions.map((opt, index) => (
+            <option key={index} value={opt}>
+              {opt}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 };
 
 export default SearchBarProfile;
+/**{/** 
+      <Dropdown
+        name={"Type:"}
+        selectedLanguages={[""]}
+        options={[
+          "All",
+          "Sources",
+          "Forks",
+          "Archived",
+          "Can be sponsored",
+          "Mirrors",
+          "Templates",
+        ]}
+      />
+
+      <Dropdown
+        name={"Language:"}
+        options={allLanguagesOptions}
+        selectedLanguages={selectedLanguages}
+      />*/

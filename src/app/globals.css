@@ -17,6 +17,23 @@ body {
   @apply hover:bg-gray-100 rounded-md flex flex-row px-2 py-1;
 }
 
+.navActive {
+  position: relative;
+  color: black;
+  text-decoration: none; /* Remove default underline */
+}
+
+.navActive::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px; /* Adjust based on the desired offset */
+  width: 120%; /* Extend horizontally */
+  height: 2px; /* Thickness of the underline */
+  background-color: rgb(234, 130, 56); /* Underline color */
+  transform: translateX(-6%); /* Center the extended underline */
+}
+
 i {
   @apply mr-0.5 text-gray-500;
 }
@@ -46,4 +63,9 @@ i {
 
 .logo {
   @apply mr-0.5 text-black;
+}
+
+input {
+  border-width: 2px;
+  @apply text-xs text-gray-600 focus:border-blue-500 border-gray-200 rounded-md p-1 w-2/3 border outline-none;
 }

@@ -1,14 +1,17 @@
 import { DropdownProps } from "../constants/types";
 
-const Dropdown = ({ name, options }: DropdownProps) => {
+const Dropdown = ({ name, options, selectedItem }: DropdownProps) => {
   return (
-    <select name={name} id={name} className="text-[11px]">
-      {options.map((opt, index) => (
-        <option key={index} value={opt}>
-          {opt}
-        </option>
-      ))}
-    </select>
+    <div className="flex flex-row text-[11px] buttonGithub">
+      <p className="mr-1">{name}</p>
+      <select name={name} id={name}>
+        {options.map((opt, index) => (
+          <option key={index} value={opt}>
+            {opt}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 };
 

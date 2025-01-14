@@ -21,6 +21,7 @@ const Repository = ({
           icon="IconStar" //{isStarred ? "/starred.webp" : "/notStarred.webp"} //TODO: calc based on current user watching page
           onClick={() => 0}
           size="sm"
+          iconFirst={true}
         />
       </div>
       <p className="text-xs mb-2">{description}</p>

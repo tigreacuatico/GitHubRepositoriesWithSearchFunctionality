@@ -1,32 +1,54 @@
 import Image from "next/image";
 import Button from "./Button";
 import { ProfileProps } from "../constants/types";
+import { IconEmail, IconStar, IconFollowers } from "@/constants/icons";
 
-const Profile = (props: ProfileProps) => {
+const Profile = ({
+  img,
+  name,
+  description,
+  username,
+  nFollowers,
+  nFollowings,
+  nStars,
+  email,
+}: ProfileProps) => {
   return (
     <div className="flex flex-col">
       <Image
-        src={props.img || "/loading.png"}
+        src={img || "/loading.png"}
         width={200}
         height={200}
-        alt={props.img}
+        alt={img}
         className="rounded-full mb-4"
+        priority
       />
-      <p className="font-bold text-md">{props.name}</p>
-      <p className="text-[13px] text-gray-600">{props.username}</p>
-      <p className="text-sm my-2">{props.description}</p>
+      <p className="font-bold text-md">{name}</p>
+      <p className="text-[13px] text-gray-600">{username}</p>
+      <p className="text-sm my-2">{description}</p>
       <Button
         label="Follow"
         onClick={() => console.log("Follow clicked")}
         size="md"
         icon={null}
+        iconFirst={false}
       />
       <div className="flex flex-row text-[10px] text-gray-600 space-x-2 mt-2">
-        <p>{props.nFollowers} followers ·</p>
-        <p>{props.nFollowings} following ·</p>
-        <p>{props.nStars}</p>
+        <p>
+          <IconFollowers />
+          {nFollowers} followers ·
+        </p>
+        <p>{nFollowings} following ·</p>
+        <p>
+          <IconStar />
+          {nStars}
+        </p>
       </div>
-      <p>{props.email}</p>
+      {}
+      <p>
+        <IconEmail />
+        {email}
+      </p>
       <hr className="h-px my-4 bg-gray-200 border-0" />
       <p className="font-bold text-xs">Organizations</p>
     </div>

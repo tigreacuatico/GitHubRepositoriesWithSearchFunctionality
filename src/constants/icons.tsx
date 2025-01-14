@@ -23,3 +23,6 @@ export const IconLanguage = (language: string) => (
   ></i>
 );
 export const IconGithub = () => <i className="bi bi-github logo"></i>;
+export const IconClose = () => <i className="bi bi-x"></i>;
+export const IconCheck = () => <i className="bi bi-check2"></i>;
+export const IconArrowDown = () => <i className="bi bi-caret-down-fill"></i>;

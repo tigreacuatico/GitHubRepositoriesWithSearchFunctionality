@@ -14,7 +14,10 @@ const Gallery = ({ options }: GalleryProps) => {
             isStarred={repo.isStarred}
             nForks={repo.nForks}
           />
-          <hr className="h-px my-4 bg-gray-200 border-0" />
+          {/** Don't render line for last item in list */}
+          {index === options.length - 1 ? null : (
+            <hr className="h-px my-4 bg-gray-200 border-0" />
+          )}
         </div>
       ))}
     </div>
