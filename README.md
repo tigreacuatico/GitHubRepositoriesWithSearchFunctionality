@@ -10,6 +10,7 @@ This is a project that implements repository search by name and language with th
 - Has unit tests (Jest, react-testing-library)
 - Has storybook
 - Is deployed in Netlify: https://githubwithsearch.netlify.app
+- Is documented with JSDoc
 
 ## Instructions on how to run the project:
 

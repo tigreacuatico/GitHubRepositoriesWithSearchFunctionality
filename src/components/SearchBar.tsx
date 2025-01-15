@@ -47,7 +47,7 @@ const SearchBar = () => {
         type="text"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        placeholder="Enter GitHub username"
+        placeholder="Search GitHub username"
         onKeyDown={handleKeyDown}
       />
       <div
