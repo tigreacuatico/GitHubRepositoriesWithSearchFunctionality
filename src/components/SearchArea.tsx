@@ -4,6 +4,26 @@ import { IconArrowDown, IconCheck, IconClose } from "../constants/icons";
 import Button from "./Button";
 import Gallery from "./Gallery";
 
+/**
+ * @callback RepositoryType
+ * @property {string} name The repository name
+ * @property {string} description The repository description
+ * @property {number} nForks The repository number of forks
+ * @property {string} lastUpdate The repository last date update
+ * @property {string} language The repository language
+ * @returns {void}
+ */
+
+/**
+ * A search area that has the repositories of a particular user, the searchbar and the language filter, and allows filtering options on the repositories list
+ *
+ * @typedef {object} SearchbarAreaProps
+ * @property {RepositoryType} repositories The respositories to display and filter
+ * @property {string} allLanguagesOptions All unique languages of the list of repositories
+ *
+ * @param {SearchbarAreaProps} props
+ * @returns {JSX.Element}
+ */
 const SearchArea = ({ repositories, languageOptions }: SearchAreaProps) => {
   const allLanguagesOptions: string[] = ["All"].concat(languageOptions);
   const allTypeOptions: string[] = [

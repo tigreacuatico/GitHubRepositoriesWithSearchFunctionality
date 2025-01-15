@@ -1,6 +1,26 @@
 import { GalleryProps } from "../constants/types";
 import Repository from "./Repository";
 
+/**
+ * @callback RepositoryType
+ * @property {string} name The repository name
+ * @property {string} description The repository description
+ * @property {number} nForks The repository number of forks
+ * @property {string} lastUpdate The repository last date update
+ * @property {string} language The repository language
+ * @returns {void}
+ */
+
+/**
+ * A gallery of items
+ *
+ * @typedef {object} GalleryProps
+ * @property {RepositoryType} options The items the gallery will display
+ *
+ * @param {GalleryProps} props
+ * @returns {JSX.Element}
+ */
+
 const Gallery = ({ options }: GalleryProps) => {
   return (
     <div className="flex flex-col my-4 md:ml-8 w-11/12">

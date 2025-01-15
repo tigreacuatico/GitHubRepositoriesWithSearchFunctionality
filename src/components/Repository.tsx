@@ -2,6 +2,19 @@ import Button from "./Button";
 import { RepositoryProps } from "../constants/types";
 import { IconForks, IconLanguage } from "@/constants/icons";
 
+/**
+ * A GitHub repository
+ *
+ * @typedef {object} RepositoryProps
+ * @property {string} name The repository name
+ * @property {string} description The repository description
+ * @property {number} nForks The repository number of forks
+ * @property {string} lastUpdate The repository last date update
+ * @property {string} language The repository language
+ *
+ * @param {RepositoryProps} props
+ * @returns {JSX.Element}
+ */
 const Repository = ({
   title,
   description,

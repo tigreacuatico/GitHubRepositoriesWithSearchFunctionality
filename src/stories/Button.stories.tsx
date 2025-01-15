@@ -1,34 +1,28 @@
-import Button from "../components/Button";
-import type { StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
+import Button from "@/components/Button";
 
-const buttonStory: { component: typeof Button } = {
+const meta: Meta<typeof Button> = {
   component: Button,
 };
 
-export default buttonStory;
+export default meta;
 
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof meta>;
 
-export const WithIconAfter: Story = {
+export const StarButton: Story = {
   args: {
-    label: "Button",
-    icon: "IconStar",
-    iconFirst: false,
-  },
-};
-
-export const WithIconInFront: Story = {
-  args: {
-    label: "Button",
+    label: "Star",
+    onClick: () => console.log("star click"),
     icon: "IconStar",
     iconFirst: true,
   },
 };
 
-export const NoIcon: Story = {
+export const FollowButton: Story = {
   args: {
-    label: "Button",
+    label: "Follow",
+    onClick: () => console.log("follow click"),
     icon: null,
-    iconFirst: false,
+    iconFirst: true,
   },
 };

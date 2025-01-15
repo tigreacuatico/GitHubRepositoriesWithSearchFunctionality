@@ -3,6 +3,23 @@ import Button from "./Button";
 import { ProfileProps } from "../constants/types";
 import { IconEmail, IconStar, IconFollowers } from "@/constants/icons";
 
+/**
+ * A GitHub user profile
+ *
+ * @typedef {object} ProfileProps
+ * @property {string} name The user name
+ * @property {string} description The user description
+ * @property {string} username The user username
+ * @property {number} nFollowings The user number of followings
+ * @property {number} nFollowers The user number of followers
+ * @property {number} nStars The user number of stars
+ * @property {number} email The user email
+ * @property {string} img The user image
+ *
+ * @param {ProfileProps} props
+ * @returns {JSX.Element}
+ */
+
 const Profile = ({
   img,
   name,

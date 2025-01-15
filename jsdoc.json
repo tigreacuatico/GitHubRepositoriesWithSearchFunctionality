@@ -1,0 +1,38 @@
+{
+  "source": {
+    "include": [
+      "dist/src/app/page.jsx",
+      "dist/src/app/layout.jsx",
+      "dist/src/app/[username]/repositories/page.jsx",
+      "dist/src/components/Button.jsx",
+      "dist/src/components/SearchBar.jsx",
+      "dist/src/components/SearchArea.jsx",
+      "dist/src/components/Profile.jsx",
+      "dist/src/components/Repository.jsx",
+      "dist/src/components/Navbar.jsx",
+      "dist/src/components/Gallery.jsx"
+    ]
+  },
+  "plugins": ["plugins/markdown"],
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": true
+  },
+  "opts": {
+    "readme": "./README.md",
+    "recurse": true,
+    "destination": "./docs/",
+    "encoding": "utf8",
+    "verbose": true,
+    "theme_opts": {
+      "default_theme": "dark",
+      "search": true,
+      "title": "Test",
+      "homepageTitle": "Docs"
+    }
+  },
+  "markdown": {
+    "hardwrap": false,
+    "idInHeadings": true
+  }
+}

@@ -1,5 +1,5 @@
 import { ButtonProps } from "../constants/types";
-//import iconData from "../constants/icons2.json";
+
 type IconData = {
   [key: string]: string;
 };
@@ -17,6 +17,19 @@ const iconData: IconData = {
   IconCheck: "bi bi-check2",
   IconArrowDown: "bi bi-caret-down-fill",
 };
+
+/**
+ * A button component with optional icon
+ *
+ * @typedef {object} ButtonProps
+ * @property {string} label The label of the button
+ * @property {()=>void} onClick The function the button executes on click
+ * @property {string} [icon] The icon of the button (optional)
+ * @property {boolean} iconFirst If icon goes first or label goes first
+ *
+ * @param {ButtonProps} props
+ * @returns {JSX.Element}
+ */
 
 const Button = ({ onClick, icon, label, iconFirst }: ButtonProps) => {
   const iconClassName: string = icon && iconData[icon] ? iconData[icon] : "";

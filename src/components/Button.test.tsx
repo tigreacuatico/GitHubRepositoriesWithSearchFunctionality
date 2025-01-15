@@ -9,7 +9,6 @@ test("renders content", () => {
       onClick={() => console.log("hello")}
       icon={null}
       label="test!"
-      size="sm"
       iconFirst={false}
     />
   );
@@ -25,7 +24,6 @@ test("clik button once", () => {
       onClick={mockHandler}
       icon={null}
       label="test!2"
-      size="sm"
       iconFirst={false}
     />
   );

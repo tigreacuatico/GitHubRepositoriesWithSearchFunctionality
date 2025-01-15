@@ -2,6 +2,12 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+/**
+ * A searchbar that performs REST calls to GitHub REST API
+ *
+ * @returns {JSX.Element}
+ */
+
 const SearchBar = () => {
   const [username, setUsername] = useState<string>("");
   const router = useRouter();

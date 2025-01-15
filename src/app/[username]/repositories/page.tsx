@@ -28,7 +28,7 @@ export default function ProfilePage() {
           `https://api.github.com/users/${username}`
         );
         const result = await response1.json();
-        console.log(result);
+
         setImage(result.avatar_url);
         setName(result.name);
         setDescription(result.description);

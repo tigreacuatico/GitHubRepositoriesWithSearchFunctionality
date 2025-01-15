@@ -14,7 +14,6 @@ test("renders content", () => {
       nFollowers={7}
       nFollowings={8}
       nStars={9}
-      imgOrganizations={[""]}
     />
   );
   component.getByText("maria");
